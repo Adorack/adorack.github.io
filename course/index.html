@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summer Programming</title>
+    <script src='https://cdn.firebase.com/v0/firebase.js' type='text/javascript'></script>
+    <script src='lib/codemirror.js'></script>
+    <script src='lib/firepad-min.js'></script>
+    <script src='lib/python.js'></script>
+    <link href='lib/codemirror.css' rel='stylesheet'>
+    <link href='lib/solarized.css' rel='stylesheet'>
+    <link href='lib/firepad.css' rel='stylesheet'>
+    <style>
+      #firepad {
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Summer Programming</h1>
+    <div id='firepad'></div>
+    <script>
+      var firepadRef = new Firebase('https://summer-programming.firebaseio.com/');
+      var codeMirror = CodeMirror(document.getElementById('firepad'), {
+        lineWrapping: true,
+        lineNumbers: true,
+        mode: 'python',
+        theme: 'solarized'
+      });
+      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        // richTextShortcuts: true,
+        // richTextToolbar: true
+      });
+    </script>
+  </body>
+</html>
